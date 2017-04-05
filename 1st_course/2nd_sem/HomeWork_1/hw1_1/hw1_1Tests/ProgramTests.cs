@@ -28,5 +28,12 @@ namespace Hw11.Tests
         {
             Assert.AreEqual(5040, Program.Factorial(7));
         }
+
+        [TestMethod()]
+        [ExpectedException(typeof(System.InvalidOperationException))]
+        public void FactorialOf0ShouldBeExceptionTest()
+        {
+            Assert.AreEqual(1, Program.Factorial(0));
+        }
     }
 }

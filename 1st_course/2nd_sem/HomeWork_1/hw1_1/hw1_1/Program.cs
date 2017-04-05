@@ -14,9 +14,10 @@ namespace Hw11
     /// <returns>Factorial of a number</returns>
         public static int Factorial(int n)
         {
+
             if (n < 1)
             {
-                return -1;
+                throw new InvalidOperationException();
             }
             if (n == 1)
             {

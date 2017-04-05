@@ -1,35 +1,32 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using hw1_1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace hw1_1.Tests
+namespace Hw11.Tests
 {
     [TestClass()]
     public class ProgramTests
     {
         [TestMethod()]
-        public void FactorialTest1()
+        public void FactorialOf5ShouldBe120Test()
         {
             Assert.AreEqual(120, Program.Factorial(5));
         }
+
         [TestMethod()]
-        public void FactorialTest2()
+        public void FactorialOf1ShouldBe1Test()
         {
             Assert.AreEqual(1, Program.Factorial(1));
         }
+
         [TestMethod()]
-        public void FactorialTest3()
+        public void FactorialOf3ShouldBe6Test()
         {
             Assert.AreEqual(6, Program.Factorial(3));
         }
+
         [TestMethod()]
-        public void FactorialTest4()
+        public void FactorialOf7ShouldBe5040Test()
         {
-            Assert.AreEqual(-1, Program.Factorial(-32));
+            Assert.AreEqual(5040, Program.Factorial(7));
         }
     }
 }

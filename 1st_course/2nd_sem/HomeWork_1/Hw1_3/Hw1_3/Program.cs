@@ -4,17 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hw1_3
+namespace Hw13
 {
     public class Program
     {
-        public static void Sort(int[] array, int sizeOfArray)
+        /// <summary>
+        /// Sorts array to increase
+        /// </summary>
+        public static void Sort(int[] array)
         {
-            for (int i = 0; i < sizeOfArray - 1; i++)
+            if(array.Length < 2)
+            {
+                throw new InvalidOperationException();
+            }
+            for (int i = 0; i < array.Length - 1; i++)
             {
                 int min = array[i];
                 int minNumber = i;
-                for (int j = i + 1; j < sizeOfArray; j++)
+                for (int j = i + 1; j < array.Length; j++)
                 {
                     if (array[j] < min)
                     {

@@ -24,13 +24,21 @@ namespace Hw1_5.Tests
         public void MatrixSortTest()
         {
             int[,] testMatrix = new int[3, 2] { { 5, 2 }, { 3, 4 }, { 1,2 } };
-            Program.MatrixSort(testMatrix, sizeOfString);
+            Program.MatrixSort(testMatrix);
             bool flag = true;
             for (int i = 0; i < sizeOfString; i++)
             {
                 flag = flag && (testMatrix[i, 0] <= testMatrix[i + 1, 0]);
             }
             Assert.IsTrue(flag);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MatrixWithOneStringExceptionTest()
+        {
+            int[,] testMatrix = new int[1, 1] { { 1 } };
+            Program.MatrixSort(testMatrix);
         }
     }
 }

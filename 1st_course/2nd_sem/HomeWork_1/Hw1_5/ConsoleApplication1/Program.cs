@@ -30,8 +30,12 @@ namespace Hw1_5
         /// <param name="matrix"></param>
         /// <param name="sizeOfString"></param>
         /// <param name="countOfString"></param>
-        public static void MatrixSort(int[,] matrix, int sizeOfString)
+        public static void MatrixSort(int[,] matrix)
         {
+            if (matrix.GetLength(0) == 1)
+            {
+                throw new InvalidOperationException();
+            }
             const int firstElement = 0;
             for (int i = 0; i < matrix.GetLength(0); i++)
             {

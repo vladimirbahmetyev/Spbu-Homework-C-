@@ -8,23 +8,36 @@ namespace Hw1_5
 {
     public class Program
     {
-        public static void SwapString(int[,] matrix, int firstString, int secondString, int sizeOfString)
+        /// <summary>
+        /// Swap all elements of two strings in Matrix
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="firstString"></param>
+        /// <param name="secondString"></param>
+        public static void SwapString(int[,] matrix, int firstString, int secondString)
         {
-            for (int i = 0; i < sizeOfString; i++)
+            for (int i = 0; i < matrix.GetLength(1); i++)
             {
-                int timeNumber = matrix[firstString,i];
+                int timeNumber = matrix[firstString, i];
                 matrix[firstString, i] = matrix[secondString, i];
                 matrix[secondString, i] = timeNumber;
             }
         }
-        public static void MatrixSort(int[,] matrix, int sizeOfString, int countOfString)
+
+        /// <summary>
+        /// Sort Strings in matrix on first elements
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="sizeOfString"></param>
+        /// <param name="countOfString"></param>
+        public static void MatrixSort(int[,] matrix, int sizeOfString)
         {
             const int firstElement = 0;
-            for (int i = 0; i < countOfString; i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 int min = matrix[i,firstElement];
                 int minNumber = i;
-                for (int j = i + 1; j < countOfString; j++)
+                for (int j = i + 1; j < matrix.GetLength(0); j++)
                 {
                     if (matrix[j, firstElement] < min)
                     {
@@ -32,7 +45,7 @@ namespace Hw1_5
                         minNumber = j;
                     }
                 }
-                Program.SwapString(matrix, i, minNumber, sizeOfString);
+                SwapString(matrix, i, minNumber);
             }
         }
             static void Main(string[] args)

@@ -11,28 +11,71 @@ namespace Hw2_2.Tests
     [TestClass()]
     public class ListTests
     {
-        [TestMethod()]
-        public void AddValueToPositionTest()
+        private List list;
+
+        [TestInitialize]
+        public void Initialize()
         {
-            Assert.Fail();
+            list = new List();
         }
 
         [TestMethod()]
-        public void GetValueByPositionTest()
+        public void AddFiveToSecondPositionTest()
         {
-            Assert.Fail();
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(5, 2);
+            Assert.IsTrue(list.GetValueByPosition(2) == 5);
         }
 
         [TestMethod()]
-        public void ChangeValueByPositionTest()
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AddFiveToEmptyListOnSecondPositionExceptionTest()
         {
-            Assert.Fail();
+            list.AddValueToPosition(5, 2);
         }
 
         [TestMethod()]
-        public void RemoveElementFromPositionTest()
+        public void GetValueByZeroPositionTest()
         {
-            Assert.Fail();
+            list.AddValueToPosition(1, 0);
+            Assert.AreEqual(1, list.GetValueByPosition(0));
+        }
+
+        [TestMethod()]
+        public void ChangeFiveBySecondPositionTest()
+        {
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(5, 2);
+            list.ChangeValueByPosition(1, 2);
+            bool flag = true;
+            for (int i = 0; i < list.length; i++)
+            {
+                flag = flag && (1 == list.GetValueByPosition(i));
+            }
+            Assert.IsTrue(flag);
+        }
+
+        [TestMethod()]
+        public void RemoveFiveFromListTest()
+        {
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(1, 0);
+            list.AddValueToPosition(5, 2);
+            list.RemoveElementFromPosition(2);
+            bool flag = true;
+            for (int i = 0; i < list.length; i++)
+            {
+                flag = flag && (1 == list.GetValueByPosition(i));
+            }
+            Assert.IsTrue(flag);
         }
     }
 }

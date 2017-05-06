@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hw2_3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hw2_3.Tests
 {
@@ -38,6 +32,15 @@ namespace Hw2_3.Tests
         [TestMethod()]
         public void DeleteElementFromHashTableTest()
         {
+            testHashTable.AddNewElementToHashTable("Hello");
+            testHashTable.DeleteElementFromHashTable("Hello");
+            Assert.IsTrue(!testHashTable.IsElementInHashTable("Hello"));
+        }
+
+        [TestMethod()]
+        public void AddElementTwiceAndDeleteElementFromHashTableTest()
+        {
+            testHashTable.AddNewElementToHashTable("Hello");
             testHashTable.AddNewElementToHashTable("Hello");
             testHashTable.DeleteElementFromHashTable("Hello");
             Assert.IsTrue(!testHashTable.IsElementInHashTable("Hello"));

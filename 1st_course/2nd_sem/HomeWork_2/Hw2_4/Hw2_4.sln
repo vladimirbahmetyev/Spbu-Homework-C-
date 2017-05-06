@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw2_4", "Hw2_4\Hw2_4.csproj", "{C929B792-F006-4B6A-84F4-E7431CE5219E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw2_4Tests", "Hw2_4Tests\Hw2_4Tests.csproj", "{DA44D90D-C9CF-41F2-8D21-5EA39E50B517}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C929B792-F006-4B6A-84F4-E7431CE5219E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C929B792-F006-4B6A-84F4-E7431CE5219E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C929B792-F006-4B6A-84F4-E7431CE5219E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C929B792-F006-4B6A-84F4-E7431CE5219E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA44D90D-C9CF-41F2-8D21-5EA39E50B517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA44D90D-C9CF-41F2-8D21-5EA39E50B517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA44D90D-C9CF-41F2-8D21-5EA39E50B517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA44D90D-C9CF-41F2-8D21-5EA39E50B517}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

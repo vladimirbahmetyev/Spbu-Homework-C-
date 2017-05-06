@@ -14,7 +14,10 @@ namespace Hw24
         /// 
         private IStack stack;
 
-        public StackCalc(IStack stack) => this.stack = stack;
+        public StackCalc(IStack stack)
+        {
+            this.stack = stack;
+        }
 
         /// <summary>
         /// Calculating an expression

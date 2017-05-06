@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hw24.Tests
 {
@@ -11,7 +10,7 @@ namespace Hw24.Tests
         [TestInitialize]
         public void Initialize()
         {
-            calc = new StackCalc(new StackOnList());
+            calc = new StackCalc(new StackOnArray());
         }
 
         [TestMethod]
@@ -23,25 +22,25 @@ namespace Hw24.Tests
         [TestMethod]
         public void SumTest()
         {
-            Assert.AreEqual(35, calc.Calculation("12 23 +"));
+            Assert.AreEqual(52, calc.Calculation("15 37 +"));
         }
 
         [TestMethod]
         public void SubstractionTest()
         {
-            Assert.AreEqual(3, calc.Calculation("8 5 -"));
+            Assert.AreEqual(10, calc.Calculation("15 5 -"));
         }
 
         [TestMethod]
         public void MultiplicationTest()
         {
-            Assert.AreEqual(182, calc.Calculation("13 14 *"));
+            Assert.AreEqual(144, calc.Calculation("12 12 *"));
         }
 
         [TestMethod]
         public void DivisionTest()
         {
-            Assert.AreEqual(6, calc.Calculation("36 6 /"));
+            Assert.AreEqual(7, calc.Calculation("49 7 /"));
         }
 
         /// <summary>

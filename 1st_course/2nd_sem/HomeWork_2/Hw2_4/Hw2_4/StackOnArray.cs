@@ -23,7 +23,10 @@ namespace Hw24
         /// 
         private int[] array;
 
-        public StackOnArray() => this.array = new int[length];
+        public StackOnArray()
+        {
+            array = new int[length];
+        }
 
         /// <summary>
         /// Pushing value to stack

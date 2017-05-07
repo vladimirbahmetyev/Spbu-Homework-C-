@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="value">Новое значение</param>
         /// <param name="position">Позиция, на которую нужно поставить новое значение</param>
-        public void AddNewValueToUniqueList (int value, int position)
+        public override void AddValueToPosition(int value, int position)
         {
             if (head.IsContainedElementInList(value))
             {

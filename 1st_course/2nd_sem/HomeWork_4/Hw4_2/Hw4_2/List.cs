@@ -48,7 +48,7 @@ namespace Hw42
         /// </summary>
         /// <param name="value">Значение нового элемента</param>
         /// <param name="position">Позиция нового элемента</param>
-        public void AddValueToPosition(int value, int position)
+        public virtual void AddValueToPosition(int value, int position)
         {
             if (position < 0 || position > length)
             {

@@ -11,7 +11,7 @@ namespace Hw42
     /// Исключение при попытке  удаления несуществующего элемента 
     /// </summary>
     [Serializable]
-    class DeleteException : Exception
+    public class DeleteException : Exception
     {
         public DeleteException() { }
         public DeleteException(string message) : base(message) { }

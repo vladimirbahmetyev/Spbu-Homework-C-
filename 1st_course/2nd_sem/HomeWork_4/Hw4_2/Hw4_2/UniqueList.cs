@@ -14,13 +14,13 @@
         /// <param name="position">Позиция, на которую нужно поставить новое значение</param>
         public override void AddValueToPosition(int value, int position)
         {
-            if (head.IsContainedElementInList(value))
+            if (IsContainedElementInList(value))
             {
                 throw new PushException("Данный элемент уже есть в списке!");
             }
             else
             {
-                head.AddValueToPosition(value, position);
+                base.AddValueToPosition(value, position);
             }
         }
 

@@ -148,6 +148,10 @@ namespace Hw42
         /// <returns></returns>
         public bool IsContainedElementInList(int checkValue)
         {
+            if (head == null)
+            {
+                return false;
+            }
             ListElement cursor = head;
             for (int i = 0; i < length; i++)
             {

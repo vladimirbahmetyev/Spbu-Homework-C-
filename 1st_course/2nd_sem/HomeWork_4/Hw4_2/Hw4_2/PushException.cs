@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hw42
 {
-
     /// <summary>
     /// Исключение при попытке добавления уже существующего элемента
     /// </summary>
     [Serializable]
-    class PushException : Exception
+    public class PushException : Exception
     {
         public PushException() { }
         public PushException(string message) : base(message) { }

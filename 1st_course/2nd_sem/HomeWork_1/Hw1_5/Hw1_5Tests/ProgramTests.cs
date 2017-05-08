@@ -1,12 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hw1_5;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hw1_5.Tests
+namespace Hw15.Tests
 {
     [TestClass()]
     public class ProgramTests

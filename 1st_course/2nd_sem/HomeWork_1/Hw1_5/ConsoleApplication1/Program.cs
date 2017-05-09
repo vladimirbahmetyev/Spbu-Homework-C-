@@ -7,9 +7,6 @@ namespace Hw15
         /// <summary>
         /// Swap all elements of two strings in Matrix
         /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="firstString"></param>
-        /// <param name="secondString"></param>
         public static void SwapString(int[,] matrix, int firstString, int secondString)
         {
             for (int i = 0; i < matrix.GetLength(1); i++)
@@ -23,9 +20,6 @@ namespace Hw15
         /// <summary>
         /// Sort Strings in matrix on first elements
         /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="sizeOfString"></param>
-        /// <param name="countOfString"></param>
         public static void MatrixSort(int[,] matrix)
         {
             if (matrix.GetLength(0) == 1)
@@ -35,7 +29,7 @@ namespace Hw15
             const int firstElement = 0;
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                int min = matrix[i,firstElement];
+                int min = matrix[i, firstElement];
                 int minNumber = i;
                 for (int j = i + 1; j < matrix.GetLength(0); j++)
                 {
@@ -48,7 +42,8 @@ namespace Hw15
                 SwapString(matrix, i, minNumber);
             }
         }
-            static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
         }
     }

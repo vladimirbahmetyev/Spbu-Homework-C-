@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hw13;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hw13.Tests
 {
@@ -12,10 +7,10 @@ namespace Hw13.Tests
     public class ProgramTests
     {
         /// <summary>
-        /// Checking if array sorted to increase
+        /// Проверяет, отсротрирована ли правильно матрица
         /// </summary>
-        /// <returns> boolean answer to this quastion</returns>
-        public bool IsArrayAlreadySorted (int[] array)
+        /// <returns> Ответ на этот вопрос</returns>
+        private bool IsArrayAlreadySorted (int[] array)
         {
             bool flag = true;
             for (int i = 0; i < array.Length - 1; i++)
@@ -41,15 +36,6 @@ namespace Hw13.Tests
             int[] testArray = new int[sizeOfArray] { 1, 1, 1};
             Program.Sort(testArray);
             Assert.IsTrue(IsArrayAlreadySorted(testArray));
-        }
-
-        [TestMethod()]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void SortToIncreaseArrayOf1ElemnetsExceptionTest()
-        {
-            const int sizeOfArray = 1;
-            int[] testArray = new int[sizeOfArray] { 1 };
-            Program.Sort(testArray);
         }
 
         [TestMethod()]

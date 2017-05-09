@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hw13
+﻿namespace Hw13
 {
+    /// <summary>
+    /// Класс программы, которая включает в себя
+    /// функцию сортировки матрицы в порядке возрастания
+    /// </summary>
     public class Program
     {
         /// <summary>
-        /// Sorts array to increase
+        /// Сортирует матрицу в порядке возрастания
         /// </summary>
         public static void Sort(int[] array)
         {
-            if(array.Length < 2)
+            if (array.Length < 2)
             {
-                throw new InvalidOperationException();
+                return;
             }
             for (int i = 0; i < array.Length - 1; i++)
             {
@@ -33,7 +31,8 @@ namespace Hw13
                 array[i] = min;
             }
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
         }
     }

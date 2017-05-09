@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Hw14
 {
+    /// <summary>
+    /// Программа, которая имеет метод распечатки матрицы по спирали
+    /// </summary>
     public class Program
     {
         /// <summary>
-        /// Transofm matrix to array
+        ///Превращает матрицу в массив
         /// </summary>
         /// <returns> Spiral array</returns>
-        public int[] TransformMatrix(int[,] matrix)
+        public static int[] TransformMatrix(int[,] matrix)
         {
             int[] array = new int[matrix.Length];
             int k = 1;
@@ -36,7 +39,6 @@ namespace Hw14
                     }
                     else
                     {
-
                         position[1]--;
                         if (position[1] < 0)
                         {

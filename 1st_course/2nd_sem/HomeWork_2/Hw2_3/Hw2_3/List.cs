@@ -15,22 +15,25 @@ namespace Hw2_3
             /// <summary>
             /// Значение элемента списка
             /// </summary>
-            public string value{ get; set; }
+            public string Value { get; set; }
+
             /// <summary>
             /// Указатель на следующий элемент списка
             /// </summary>
-            public ListElement next {get; set;}
+            public ListElement Next { get; set; }
+
             /// <summary>
             /// Конструктор для класса ListElement
             /// </summary>
-            /// <param name="value">Значение элемента</param>
-            /// <param name="next">указатель на следующий элемент</param>
-            public ListElement (string value, ListElement next)
-           {
-                this.value = value;
-                this.next = next;
-           }
+            /// <param name="Value">Значение элемента</param>
+            /// <param name="Next">указатель на следующий элемент</param>
+            public ListElement(string value, ListElement next)
+            {
+                Value = value;
+                Next = next;
+            }
         }
+
         /// <summary>
         /// Указатель на первый элемент списка
         /// </summary>
@@ -39,16 +42,16 @@ namespace Hw2_3
         /// <summary>
         /// Длина списка
         /// </summary>
-        public int length;
+        private int length;
 
         /// <summary>
         /// Добавление элемента на n-ую корректную позицию\
         /// n >= 0
         /// position не может быть больше length
         /// </summary>
-        /// <param name="value">Значение нового элемента</param>
+        /// <param name="Value">Значение нового элемента</param>
         /// <param name="position">Позиция нового элемента</param>
-        public void AddValueToPosition(string value, int position)
+        public void AddValueToPosition(string Value, int position)
         {
             if (position < 0 || position > length)
             {
@@ -56,18 +59,18 @@ namespace Hw2_3
             }
             if (position == 0)
             {
-                head = new ListElement(value, head);
+                head = new ListElement(Value, head);
                 length++;
                 return;
             }
             ListElement cursor = head;
             for (var i = 0; i < position - 1; i++)
             {
-                cursor = cursor.next;
-                var newElement = new ListElement(value, cursor.next);
-                cursor.next = newElement;
-                length++;
+                cursor = cursor.Next;
             }
+            var newElement = new ListElement(Value, cursor.Next);
+            cursor.Next = newElement;
+            length++;
         }
 
         /// <summary>
@@ -87,10 +90,10 @@ namespace Hw2_3
             var cursor = head;
             for (var i = 0; i < position; ++i)
             {
-                cursor = cursor.next;
+                cursor = cursor.Next;
             }
 
-            return cursor.value;
+            return cursor.Value;
         }
 
         /// <summary>
@@ -98,20 +101,20 @@ namespace Hw2_3
         /// n >= 0
         /// position не может быть больше length
         /// </summary>
-        /// <param name="value">Новое значение</param>
+        /// <param name="Value">Новое значение</param>
         /// <param name="position">Позиция заменяемого элемента</param>
-        public void ChangeValueByPosition (string value, int position)
+        public void ChangeValueByPosition(string Value, int position)
         {
             if (position < 0 || position >= length)
             {
                 throw new InvalidOperationException("Incorrect position!");
             }
             ListElement cursor = head;
-            for (int i = 0; i< position; i++)
+            for (int i = 0; i < position; i++)
             {
-                cursor = cursor.next;
+                cursor = cursor.Next;
             }
-            cursor.value = value;
+            cursor.Value = Value;
         }
 
         /// <summary>
@@ -128,18 +131,24 @@ namespace Hw2_3
             }
             if (position == 0)
             {
-                head = head.next;
+                head = head.Next;
                 length--;
                 return;
             }
             ListElement cursor = head;
             for (int i = 0; i < position - 1; i++)
             {
-                cursor = cursor.next;
-                cursor.next = cursor.next.next;
-                length--;
+                cursor = cursor.Next;
             }
+            cursor.Next = cursor.Next.Next;
+            length--;
         }
+
+        /// <summary>
+        /// Вовзращает длину списка
+        /// </summary>
+        /// <returns></returns>
+        public int GetLength() => length;
 
         /// <summary>
         /// Проверяет, есть ли данный элемент в списке

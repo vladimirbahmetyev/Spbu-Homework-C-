@@ -16,6 +16,7 @@ namespace Hw2_3
         /// Конструктор Хэш Таблицы
         /// </summary>
         private List[] hashTableElements;
+
         public HashTable()
         {
             hashTableElements = new List[sizeOfHashTable];

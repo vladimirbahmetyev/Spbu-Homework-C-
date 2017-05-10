@@ -26,7 +26,9 @@ namespace Hw2_3.Tests
             testHashTable.AddNewElementToHashTable("Hello");
             testHashTable.AddNewElementToHashTable("World");
             testHashTable.AddNewElementToHashTable("!");
-            Assert.IsTrue(testHashTable.IsElementInHashTable("Hello") && testHashTable.IsElementInHashTable("World") && testHashTable.IsElementInHashTable("!"));
+            Assert.IsTrue(testHashTable.IsElementInHashTable("Hello"));
+            Assert.IsTrue(testHashTable.IsElementInHashTable("World"));
+            Assert.IsTrue(testHashTable.IsElementInHashTable("!"));
         }
 
         [TestMethod()]
@@ -43,7 +45,7 @@ namespace Hw2_3.Tests
             testHashTable.AddNewElementToHashTable("Hello");
             testHashTable.AddNewElementToHashTable("Hello");
             testHashTable.DeleteElementFromHashTable("Hello");
-            Assert.IsTrue(!testHashTable.IsElementInHashTable("Hello"));
+            Assert.IsFalse(testHashTable.IsElementInHashTable("Hello"));
         }
     }
 }

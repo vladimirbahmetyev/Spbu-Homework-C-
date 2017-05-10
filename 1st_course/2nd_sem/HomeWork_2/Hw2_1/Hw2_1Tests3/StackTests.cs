@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static Hw21.Program;
+using System;
 
-namespace Hw2_1.Tests
+namespace Hw21.Tests
 {
     [TestClass()]
     public class StackTests
@@ -15,16 +15,18 @@ namespace Hw2_1.Tests
         }
 
         [TestMethod()]
-        public void pushZeroToStackTest()
+        public void PushZeroToStackTest()
         { 
             testStack.Push(0);
-            Assert.IsTrue(0 == testStack.Pop() && testStack.IsStackEmpty());
+            Assert.IsTrue(0 == testStack.Pop());
+            Assert.IsTrue(testStack.IsStackEmpty());
         }
 
         [TestMethod()]
-        public void popFromTheEmptyStackShouldTest()
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void PopFromTheEmptyStackShouldTest()
         {
-           Assert.AreEqual(-1, testStack.Pop());
+            testStack.Pop();
         }
 
         [TestMethod()]

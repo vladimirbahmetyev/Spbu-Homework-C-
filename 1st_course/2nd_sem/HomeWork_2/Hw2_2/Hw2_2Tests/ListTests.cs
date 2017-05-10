@@ -1,12 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hw2_2;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hw2_2.Tests
+namespace Hw22.Tests
 {
     [TestClass()]
     public class ListTests
@@ -27,7 +22,7 @@ namespace Hw2_2.Tests
             list.AddValueToPosition(1, 0);
             list.AddValueToPosition(1, 0);
             list.AddValueToPosition(5, 2);
-            Assert.IsTrue(list.GetValueByPosition(2) == 5);
+            Assert.AreEqual(list.GetValueByPosition(2), 5);
         }
 
         [TestMethod()]
@@ -54,7 +49,7 @@ namespace Hw2_2.Tests
             list.AddValueToPosition(5, 2);
             list.ChangeValueByPosition(1, 2);
             bool flag = true;
-            for (int i = 0; i < list.length; i++)
+            for (int i = 0; i < list.GetLength(); i++)
             {
                 flag = flag && (1 == list.GetValueByPosition(i));
             }
@@ -70,12 +65,10 @@ namespace Hw2_2.Tests
             list.AddValueToPosition(1, 0);
             list.AddValueToPosition(5, 2);
             list.RemoveElementFromPosition(2);
-            bool flag = true;
-            for (int i = 0; i < list.length; i++)
+            for (int i = 0; i < list.GetLength(); i++)
             {
-                flag = flag && (1 == list.GetValueByPosition(i));
+                Assert.AreEqual(1, list.GetValueByPosition(i));
             }
-            Assert.IsTrue(flag);
         }
     }
 }

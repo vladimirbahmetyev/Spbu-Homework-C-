@@ -3,27 +3,28 @@
 namespace Hw24
 {
     /// <summary>
- /// Stack calculator.
- /// Works only with expression which can be unsigned integer.
+ /// Стековый калькулятор
  /// </summary>
     public class StackCalc
     {
         /// <summary>
-        /// Stack for calculation
+        /// Стэк для вычислений
         /// </summary>
         /// 
         private IStack stack;
 
+        /// <summary>
+        /// Конструктор стекового калькулятора
+        /// </summary>
+        /// <param name="stack"></param>
         public StackCalc(IStack stack)
         {
             this.stack = stack;
         }
 
         /// <summary>
-        /// Calculating an expression
+        /// Вычисляет выражение
         /// </summary>
-        /// <param name="expression">The expression for calculating</param>
-        /// <returns>The result of calculating</returns>
         public int Calculation(string expression)
         {
             int expressionLength = expression.Length;
@@ -57,12 +58,11 @@ namespace Hw24
                     }
                 }
             }
-
             return stack.Pop();
         }
 
         /// <summary>
-        /// Executing an operating by an operator
+        /// Проводит вычисления исходя из оператора
         /// </summary>
         /// <param name="operation">Operator</param>
         private void Operating(char operation)

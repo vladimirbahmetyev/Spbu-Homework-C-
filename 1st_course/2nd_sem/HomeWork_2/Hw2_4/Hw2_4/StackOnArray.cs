@@ -3,54 +3,55 @@
 namespace Hw24
 {
     /// <summary>
-    /// Stack on array
+    /// Стек на массиве
     /// </summary>
     public class StackOnArray : IStack
     {
         /// <summary>
-        /// The max length of stack
+        /// Максимальная длина стека
         /// </summary>
         private const int length = 100;
 
         /// <summary>
-        /// The index of next added element
+        /// Номер "головы" стека в массиве
         /// </summary>
         private int head;
 
         /// <summary>
-        /// Stack array
+        /// Стек на массиве
         /// </summary>
         /// 
         private int[] array;
 
+        /// <summary>
+        /// Конструктор стека
+        /// </summary>
         public StackOnArray()
         {
             array = new int[length];
         }
 
         /// <summary>
-        /// Pushing value to stack
+        /// Метод добавляет новое значение в стек
         /// </summary>
-        /// <param name="value">Value for pushing</param>
         public void Push(int value)
         {
             if (head > length)
             {
-                throw new Exception("The stack is full!");
+                throw new InvalidOperationException("Стек переполнен!");
             }
             array[head] = value;
             head++;
         }
 
         /// <summary>
-        /// Pop value from stack
+        /// Достает значение из стека
         /// </summary>
-        /// <returns>Last pushed value</returns>
         public int Pop()
         {
             if (IsEmpty())
             {
-                throw new Exception("The stack is empty!");
+                throw new InvalidOperationException("Стек пустой!");
             }
             var temp = array[head - 1];
             head--;
@@ -58,28 +59,25 @@ namespace Hw24
         }
 
         /// <summary>
-        /// Getting value from head
+        /// Возвращает значение с головы стека
         /// </summary>
-        /// <returns>Value from head</returns>
         public int Peek()
         {
             if (IsEmpty())
             {
-                throw new Exception("The stack is empty!");
+                throw new Exception("Стек пустой!");
             }
             return array[head - 1];
         }
 
         /// <summary>
-        /// Getting length of stack
+        /// Возвращает кол-во элементов в стеке
         /// </summary>
-        /// <returns>Length of stack</returns>
         public int GetLength() => head;
 
         /// <summary>
-        /// Checking stack on emptiness
+        /// Проверяет, пустой ли стек или нет
         /// </summary>
-        /// <returns>True if stack is empty otherwise false</returns>
         public bool IsEmpty() => head == 0;
     }
 }

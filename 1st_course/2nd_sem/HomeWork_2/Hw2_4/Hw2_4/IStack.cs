@@ -1,38 +1,33 @@
 ﻿namespace Hw24
 {
     /// <summary>
-    /// The interface of stack
+    /// Интерфейс стека
     /// </summary>
     public interface IStack
     {
         /// <summary>
-        /// Pushing value to stack
+        ///Добавляет значение в стек
         /// </summary>
-        /// <param name="value">Value for pushing</param>
         void Push(int value);
 
         /// <summary>
-        /// Popping value from stack
+        /// Достает значение из стека
         /// </summary>
-        /// <returns>Last pushed value</returns>
         int Pop();
 
         /// <summary>
-        /// Getting value from head
+        /// Копирует значение с головы стека
         /// </summary>
-        /// <returns>Value from head</returns>
         int Peek();
 
         /// <summary>
-        /// Getting length of stack
+        /// Выдает кол-во элементов в стеке
         /// </summary>
-        /// <returns>Length of stack</returns>
         int GetLength();
 
         /// <summary>
-        /// Checking stack on emptiness
+        /// Проверяет пустой ли стек true/false
         /// </summary>
-        /// <returns>True if stack is empty otherwise false</returns>
         bool IsEmpty();
     }
 }

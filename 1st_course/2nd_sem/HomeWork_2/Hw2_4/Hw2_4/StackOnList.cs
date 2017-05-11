@@ -3,89 +3,78 @@
 namespace Hw24
 {
     /// <summary>
-    /// Stack On List
+    /// Класс Стек
     /// </summary>
     public class StackOnList : IStack
     {
         /// <summary>
-        /// The Element Of Stack
+        /// Класс Элемент стека
         /// </summary>
         private class StackElement
         {
-            public StackElement next { get; private set; }
-            public int value { get; private set; }
+            public StackElement Next { get; private set; }
+            public int Value { get; private set; }
             public StackElement(StackElement next, int value)
             {
-                this.next = next;
-                this.value = value;
+                Next = next;
+                Value = value;
             }
         }
 
         /// <summary>
-        /// Length Of Stack
+        /// Кол-во элементов в стеке
         /// </summary>
-        private int length = 0;
+        private int lentgh;
 
         /// <summary>
-        /// The first element of Stack
+        /// Указатель на первый элемент стека
         /// </summary>
         private StackElement head = null;
-            
+
         /// <summary>
-        /// Add new element to stack
+        /// Метод, добавляющий один элемент в стек
         /// </summary>
-        /// <param name="value">New element</param>
-        public void Push (int value)
+        public void Push(int value)
         {
-            head = new StackElement ( head, value );
-            length++;
+            head = new StackElement(head, value);
+            lentgh++;
         }
 
         /// <summary>
-        /// Pop element from head of stack
+        /// Метод, возвращающий значение с головы стека
         /// </summary>
-        /// <returns>Element from the head</returns>
-        public int Pop ()
+        public int Pop()
         {
             if (head == null)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Стек пустой!");
             }
-            int element = head.value;
-            head = head.next;
-            length--;
+            int element = head.Value;
+            head = head.Next;
+            lentgh--;
             return element;
         }
 
         /// <summary>
-        /// Checking if stack is empty
+        /// Метод возвращает true, если стек пустой
         /// </summary>
-        /// <returns></returns>
-        public bool IsEmpty()
-        {
-            return null == head;
-        }
+        public bool IsEmpty() => null == head;
 
         /// <summary>
-        /// Return value without pop
+        /// Возвращает кол-во элементов в стеке
         /// </summary>
-        /// <returns>Value from head</returns>
+        public int GetLength() => lentgh;
+
+        /// <summary>
+        /// Возвращает значение с головы стека
+        /// </summary>
         public int Peek()
         {
-            if (head == null)
+            if(head == null)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Стек пустой!");
             }
-            return head.value;
-        }
-
-        /// <summary>
-        /// Return length of stack
-        /// </summary>
-        /// <returns>Length value</returns>
-        public int GetLength()
-        {
-            return length;
+            return head.Value;
         }
     }
 }

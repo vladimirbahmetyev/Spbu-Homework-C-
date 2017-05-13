@@ -18,7 +18,7 @@ namespace Hw21.Tests
         public void PushZeroToStackTest()
         { 
             testStack.Push(0);
-            Assert.IsTrue(0 == testStack.Pop());
+            Assert.AreEqual(0, testStack.Pop());
             Assert.IsTrue(testStack.IsStackEmpty());
         }
 

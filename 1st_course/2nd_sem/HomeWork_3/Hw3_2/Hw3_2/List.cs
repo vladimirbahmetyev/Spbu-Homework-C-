@@ -52,7 +52,7 @@ namespace Hw32
         {
             if (position < 0 || position > length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция!");
             }
             if (position == 0)
             {
@@ -81,7 +81,7 @@ namespace Hw32
         {
             if (position < 0 || position >= length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция");
             }
 
             var cursor = head;
@@ -104,7 +104,7 @@ namespace Hw32
         {
             if (position < 0 || position >= length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция!");
             }
             ListElement cursor = head;
             for (int i = 0; i< position; i++)
@@ -124,7 +124,7 @@ namespace Hw32
         {
             if (position < 0 || position >= length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция");
             }
             if (position == 0)
             {
@@ -186,5 +186,11 @@ namespace Hw32
                 RemoveElementFromPosition(PositionElementInList(deleteString));
             }
         }
+
+        /// <summary>
+        /// Выдает кол-во элементов в Списке
+        /// </summary>
+        /// <returns></returns>
+        public int GetLength() => length;
     }
 }

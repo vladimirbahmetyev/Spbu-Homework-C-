@@ -1,15 +1,15 @@
 ﻿namespace Hw32
 {
     /// <summary>
-    /// Interface of hash function
+    /// Интерфейс хэш функции
     /// </summary>
     public interface IHashFunction
     {
         /// <summary>
-        /// Getting hash value
+        /// Получить ключ по значению
         /// </summary>
-        /// <param name="word">Value for hashing</param>
-        /// <returns>Hash</returns>
-        uint GetHash(string word);
+        /// <param name="word">Значение, по которому получают ключ</param>
+        /// <returns>Ключ</returns>
+        int GetHash(string word);
     }
 }

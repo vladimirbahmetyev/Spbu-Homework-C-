@@ -1,18 +1,18 @@
 ﻿namespace Hw32
 {
     // <summary>
-    /// Function for hashing
+    ///Функция для получения ключа
     /// </summary>
     public class HashFunction1 : IHashFunction
     {
         /// <summary>
-        /// Getting hash value
+        /// Получить ключ по значению
         /// </summary>
-        /// <param name="word">Word for hashing</param>
-        /// <returns>Hash value</returns>
-        public uint GetHash(string word)
+        /// <param name="word">Значение, по которому получают ключ</param>
+        /// <returns>Ключ</returns>
+        public int GetHash(string word)
         {
-            uint hash = 1701;
+            int hash = 1701;
 
             foreach (var symbol in word)
             {

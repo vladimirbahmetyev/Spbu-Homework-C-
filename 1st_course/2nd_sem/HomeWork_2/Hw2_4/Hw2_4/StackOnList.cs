@@ -1,5 +1,7 @@
 ﻿using System;
 
+// Это мой стек из домашки 2.1
+
 namespace Hw24
 {
     /// <summary>
@@ -24,7 +26,7 @@ namespace Hw24
         /// <summary>
         /// Кол-во элементов в стеке
         /// </summary>
-        private int lentgh;
+        private int length;
 
         /// <summary>
         /// Указатель на первый элемент стека
@@ -37,7 +39,7 @@ namespace Hw24
         public void Push(int value)
         {
             head = new StackElement(head, value);
-            lentgh++;
+            length++;
         }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace Hw24
             }
             int element = head.Value;
             head = head.Next;
-            lentgh--;
+            length--;
             return element;
         }
 
@@ -63,7 +65,7 @@ namespace Hw24
         /// <summary>
         /// Возвращает кол-во элементов в стеке
         /// </summary>
-        public int GetLength() => lentgh;
+        public int GetLength() => length;
 
         /// <summary>
         /// Возвращает значение с головы стека

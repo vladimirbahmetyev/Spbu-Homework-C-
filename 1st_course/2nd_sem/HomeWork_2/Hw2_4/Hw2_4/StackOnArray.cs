@@ -1,5 +1,7 @@
 ﻿using System;
 
+//Коментарии писал сам, переписал сами фукции
+
 namespace Hw24
 {
     /// <summary>
@@ -15,7 +17,7 @@ namespace Hw24
         /// <summary>
         /// Номер "головы" стека в массиве
         /// </summary>
-        private int head;
+        private int head = -1;
 
         /// <summary>
         /// Стек на массиве
@@ -36,12 +38,12 @@ namespace Hw24
         /// </summary>
         public void Push(int value)
         {
-            if (head > length)
+            if(head + 1 == length)
             {
                 throw new InvalidOperationException("Стек переполнен!");
             }
-            array[head] = value;
             head++;
+            array[head] = value;
         }
 
         /// <summary>
@@ -53,9 +55,9 @@ namespace Hw24
             {
                 throw new InvalidOperationException("Стек пустой!");
             }
-            var temp = array[head - 1];
+            int value = array[head];
             head--;
-            return temp;
+            return value;
         }
 
         /// <summary>
@@ -67,17 +69,17 @@ namespace Hw24
             {
                 throw new Exception("Стек пустой!");
             }
-            return array[head - 1];
+            return array[head];
         }
 
         /// <summary>
         /// Возвращает кол-во элементов в стеке
         /// </summary>
-        public int GetLength() => head;
+        public int GetLength() => head + 1;
 
         /// <summary>
         /// Проверяет, пустой ли стек или нет
         /// </summary>
-        public bool IsEmpty() => head == 0;
+        public bool IsEmpty() => head == -1;
     }
 }

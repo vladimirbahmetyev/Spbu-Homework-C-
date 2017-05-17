@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Hw24.Tests
 {
@@ -14,33 +15,39 @@ namespace Hw24.Tests
         }
 
         [TestMethod]
-        public void CalculationWithEmptyLineTest()
-        {
-            Assert.AreEqual(0, calc.Calculation(""));
-        }
-
-        [TestMethod]
         public void SumTest()
         {
-            Assert.AreEqual(52, calc.Calculation("15 37 +"));
+            calc.AddValueToStack(15);
+            calc.AddValueToStack(37);
+            calc.Sum();
+            Assert.AreEqual(52, calc.GetAnswer());
         }
 
         [TestMethod]
         public void SubstractionTest()
         {
-            Assert.AreEqual(10, calc.Calculation("15 5 -"));
+            calc.AddValueToStack(15);
+            calc.AddValueToStack(5);
+            calc.Subtraction();
+            Assert.AreEqual(10, calc.GetAnswer());
         }
 
         [TestMethod]
         public void MultiplicationTest()
         {
-            Assert.AreEqual(144, calc.Calculation("12 12 *"));
+            calc.AddValueToStack(12);
+            calc.AddValueToStack(12);
+            calc.Multiplication();
+            Assert.AreEqual(144, calc.GetAnswer());
         }
 
         [TestMethod]
         public void DivisionTest()
         {
-            Assert.AreEqual(7, calc.Calculation("49 7 /"));
+            calc.AddValueToStack(49);
+            calc.AddValueToStack(7);
+            calc.Division();
+            Assert.AreEqual(7, calc.GetAnswer());
         }
 
         /// <summary>
@@ -50,7 +57,20 @@ namespace Hw24.Tests
         [TestMethod]
         public void CalculationTest1()
         {
-            Assert.AreEqual(6, calc.Calculation("8 2 5 * + 1 3 2 * + 4 - /"));
+            calc.AddValueToStack(8);
+            calc.AddValueToStack(2);
+            calc.AddValueToStack(5);
+            calc.Multiplication();
+            calc.Sum();
+            calc.AddValueToStack(1);
+            calc.AddValueToStack(3);
+            calc.AddValueToStack(2);
+            calc.Multiplication();
+            calc.Sum();
+            calc.AddValueToStack(4);
+            calc.Subtraction();
+            calc.Division();
+            Assert.AreEqual(6, calc.GetAnswer());
         }
 
         /// <summary>
@@ -60,7 +80,12 @@ namespace Hw24.Tests
         [TestMethod]
         public void CalculationTest2()
         {
-            Assert.AreEqual(12, calc.Calculation("1 2 + 4 *"));
+            calc.AddValueToStack(1);
+            calc.AddValueToStack(2);
+            calc.Sum();
+            calc.AddValueToStack(4);
+            calc.Multiplication();
+            Assert.AreEqual(12, calc.GetAnswer());
         }
 
         /// <summary>
@@ -70,7 +95,29 @@ namespace Hw24.Tests
         [TestMethod]
         public void CalculationTest3()
         {
-            Assert.AreEqual(9, calc.Calculation("9 6 - 1 2 + *"));
+            calc.AddValueToStack(9);
+            calc.AddValueToStack(6);
+            calc.Subtraction();
+            calc.AddValueToStack(1);
+            calc.AddValueToStack(2);
+            calc.Sum();
+            calc.Multiplication();
+            Assert.AreEqual(9, calc.GetAnswer());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GetValueFromEmptyStack()
+        {
+            calc.GetAnswer();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TryToSumOneElement()
+        {
+            calc.AddValueToStack(1);
+            calc.Sum();
         }
     }
 }

@@ -23,70 +23,87 @@ namespace Hw24
         }
 
         /// <summary>
-        /// Вычисляет выражение
+        /// Добавляет значение в стек
         /// </summary>
-        public int Calculation(string expression)
+        public void AddValueToStack(int value)
         {
-            int expressionLength = expression.Length;
-            int currentNumber = 0;
-            bool isLastNumber = true;
-
-            if (expressionLength == 0)
-            {
-                return 0;
-            }
-
-            for (var i = 0; i < expressionLength; i++)
-            {
-                if (expression[i] >= '0' && expression[i] <= '9')
-                {
-                    currentNumber = currentNumber * 10 + (int)Char.GetNumericValue(expression[i]);
-                    isLastNumber = true;
-                }
-                else
-                {
-                    if (isLastNumber)
-                    {
-                        stack.Push(currentNumber);
-                        currentNumber = 0;
-                        isLastNumber = false;
-                    }
-
-                    if (expression[i] != ' ')
-                    {
-                        Operating(expression[i]);
-                    }
-                }
-            }
-            return stack.Pop();
+            stack.Push(value);
         }
 
         /// <summary>
-        /// Проводит вычисления исходя из оператора
+        /// Выполняет Сложение
         /// </summary>
-        /// <param name="operation">Operator</param>
-        private void Operating(char operation)
+        public void Sum()
         {
-            int num1 = stack.Pop();
-            int num2 = stack.Pop();
-
-            switch (operation)
+            if(stack.GetLength() < 2)
             {
-                case '+':
-                    stack.Push(num1 + num2);
-                    break;
-                case '-':
-                    stack.Push(num2 - num1);
-                    break;
-                case '*':
-                    stack.Push(num1 * num2);
-                    break;
-                case '/':
-                    stack.Push(num2 / num1);
-                    break;
-                default:
-                    break;
+                throw new InvalidOperationException("В стеке менее двух чисел!");
             }
+
+            int numberTwo = stack.Pop();
+            int numberOne = stack.Pop();
+
+            stack.Push(numberOne + numberTwo);
+        }
+
+        /// <summary>
+        /// Выполняет умножение
+        /// </summary>
+        public void Multiplication()
+        {
+            if (stack.GetLength() < 2)
+            {
+                throw new InvalidOperationException("В стеке менее двух чисел!");
+            }
+
+            int numberTwo = stack.Pop();
+            int numberOne = stack.Pop();
+
+            stack.Push(numberOne * numberTwo);
+        }
+
+        /// <summary>
+        /// Выполнияет вычитание
+        /// </summary>
+        public void Subtraction()
+        {
+            if (stack.GetLength() < 2)
+            {
+                throw new InvalidOperationException("В стеке менее двух чисел!");
+            }
+
+            int numberTwo = stack.Pop();
+            int numberOne = stack.Pop();
+
+            stack.Push(numberOne - numberTwo);
+        }
+
+        /// <summary>
+        /// Выполняет деление
+        /// </summary>
+        public void Division()
+        {
+            if (stack.GetLength() < 2)
+            {
+                throw new InvalidOperationException("В стеке менее двух чисел!");
+            }
+
+            int numberTwo = stack.Pop();
+            int numberOne = stack.Pop();
+
+            stack.Push(numberOne / numberTwo);
+        }
+
+        /// <summary>
+        /// Выдает ответ
+        /// </summary>
+        public int GetAnswer()
+        {
+            if(stack.IsEmpty())
+            {
+                throw new InvalidOperationException("Стек пустой!");
+            }
+            return stack.Peek();
         }
     }
 }

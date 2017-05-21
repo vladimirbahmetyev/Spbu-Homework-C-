@@ -31,6 +31,7 @@ namespace Hw32
                 this.next = next;
            }
         }
+
         /// <summary>
         /// Указатель на первый элемент списка
         /// </summary>

@@ -29,31 +29,13 @@ namespace Hw32
                 hashTableElements[i] = new List();
             }
         }
-
-        /// <summary>
-        /// Функция, создающая ключ по элементу
-        /// </summary>
-        /// <param name="inputString">Элемент, по которому создается ключ</param>
-        /// <returns>Ключ</returns>
-        private int HashFunction(string inputString)
-        {
-            int hash = 0;
-            for (int i = 0; i < inputString.Length; i++)
-            {
-                hash = hash + inputString[i] * i + 1701;
-            }
-            return Math.Abs(hash) % sizeOfHashTable;
-        }
-
+        
         /// <summary>
         /// Проверяет, есть ли данное слово в Хэш Таблице
         /// </summary>
         /// <param name="inputString">Слово, для проверки</param>
         /// <returns>Логический ответ на данный вопрос</returns>
-        public bool IsElementInHashTable(string inputString)
-        {
-            return hashTableElements[HashFunction(inputString)].IsElementInList(inputString);
-        }
+        public bool IsElementInHashTable(string inputString) => hashTableElements[hashFunction.GetHash(inputString)].IsElementInList(inputString);
 
         /// <summary>
         /// Добавляет новые элемент в Хэш Таблицу
@@ -63,7 +45,7 @@ namespace Hw32
         {
             if (!IsElementInHashTable(inputString))
             {
-                hashTableElements[HashFunction(inputString)].AddValueToPosition(inputString, 0);
+                hashTableElements[hashFunction.GetHash(inputString)].AddValueToPosition(inputString, 0);
             }
         }
 
@@ -71,11 +53,11 @@ namespace Hw32
         /// Удаляет элемент из Хэш Таблицы
         /// </summary>
         /// <param name="deleteString">Елемент, который нужно удалить</param>
-        public void DeleteElementFromHashTable (string deleteString)
+        public void DeleteElementFromHashTable(string deleteString)
         {
             if (IsElementInHashTable(deleteString))
             {
-                hashTableElements[HashFunction(deleteString)].DeleteElementFromList(deleteString);
+                hashTableElements[hashFunction.GetHash(deleteString)].DeleteElementFromList(deleteString);
             }
         }
 

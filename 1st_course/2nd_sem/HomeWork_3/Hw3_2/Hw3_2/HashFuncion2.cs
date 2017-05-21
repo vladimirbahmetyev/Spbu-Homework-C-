@@ -1,4 +1,6 @@
-﻿namespace Hw32
+﻿using System;
+
+namespace Hw32
 {
     /// <summary>
     /// Функция для получения ключа
@@ -19,7 +21,7 @@
                 hash = hash * 666 + symbol + 1701;
             }
 
-            return hash;
+            return Math.Abs(hash) % 10000;
         }
     }
 }

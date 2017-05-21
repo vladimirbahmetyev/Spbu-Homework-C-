@@ -19,18 +19,19 @@ namespace Hw42
             /// <summary>
             /// Указатель на следующий элемент списка
             /// </summary>
-            public ListElement next {get; set;}
+            public ListElement next { get; set; }
             /// <summary>
             /// Конструктор для класса ListElement
             /// </summary>
             /// <param name="value">Значение элемента</param>
             /// <param name="next">указатель на следующий элемент</param>
-            public ListElement (int value, ListElement next)
-           {
+            public ListElement(int value, ListElement next)
+            {
                 this.value = value;
                 this.next = next;
-           }
+            }
         }
+
         /// <summary>
         /// Указатель на первый элемент списка
         /// </summary>
@@ -52,7 +53,7 @@ namespace Hw42
         {
             if (position < 0 || position > length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция!");
             }
             if (position == 0)
             {
@@ -81,7 +82,7 @@ namespace Hw42
         {
             if (position < 0 || position >= length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция");
             }
 
             var cursor = head;
@@ -100,14 +101,14 @@ namespace Hw42
         /// </summary>
         /// <param name="value">Новое значение</param>
         /// <param name="position">Позиция заменяемого элемента</param>
-        public void ChangeValueByPosition (int value, int position)
+        public void ChangeValueByPosition(int value, int position)
         {
             if (position < 0 || position >= length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция!");
             }
             ListElement cursor = head;
-            for (int i = 0; i< position; i++)
+            for (int i = 0; i < position; i++)
             {
                 cursor = cursor.next;
             }
@@ -120,11 +121,11 @@ namespace Hw42
         /// position не может быть больше length
         /// </summary>
         /// <param name="position">Позиция элемента, который нужно удалить</param>
-        public void RemoveElementFromPosition (int position)
+        public void RemoveElementFromPosition(int position)
         {
             if (position < 0 || position >= length)
             {
-                throw new InvalidOperationException("Incorrect position!");
+                throw new InvalidOperationException("Некорректная позиция");
             }
             if (position == 0)
             {
@@ -142,24 +143,18 @@ namespace Hw42
         }
 
         /// <summary>
-        /// Провеяет, есть ли данный элемент в списке
+        /// Проверяет, есть ли данный элемент в списке
         /// </summary>
-        /// <param name="checkValue">Элемент, который нужно проверить</param>
-        /// <returns></returns>
-        public bool IsContainedElementInList(int checkValue)
+        /// <param name="value">Элемент, который проверяется</param>
+        /// <returns>Наличие этого эелемента в списке</returns>
+        public bool IsContainedElementInList(int value)
         {
-            if (head == null)
-            {
-                return false;
-            }
-            ListElement cursor = head;
             for (int i = 0; i < length; i++)
             {
-                if(cursor.value == checkValue)
+                if (GetValueByPosition(i) == value)
                 {
                     return true;
                 }
-                cursor = cursor.next;
             }
             return false;
         }
@@ -171,14 +166,12 @@ namespace Hw42
         /// <returns>Позиция искомого элемента</returns>
         private int PositionElementInList(int value)
         {
-            ListElement cursor = head;
             for (int i = 0; i < length; i++)
             {
-                if (cursor.value == value)
+                if (GetValueByPosition(i) == value)
                 {
                     return i;
                 }
-                cursor = cursor.next;
             }
             return -1;
         }
@@ -186,13 +179,19 @@ namespace Hw42
         /// <summary>
         /// Удаляет элемент из списка
         /// </summary>
-        /// <param name="value">Элемент который нужно удалить</param>
-        public void DeleteElementFromList(int value)
+        /// <param name="deleteint">Элемент, который нужно удалить</param>
+        public void DeleteElementFromList(int deleteint)
         {
-            if(IsContainedElementInList(value))
+            if (IsContainedElementInList(deleteint))
             {
-                RemoveElementFromPosition(PositionElementInList(value));
+                RemoveElementFromPosition(PositionElementInList(deleteint));
             }
         }
+
+        /// <summary>
+        /// Выдает кол-во элементов в Списке
+        /// </summary>
+        /// <returns></returns>
+        public int GetLength() => length;
     }
 }

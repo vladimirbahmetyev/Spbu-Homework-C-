@@ -31,8 +31,8 @@ namespace Hw42.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(PushException))]
-        public void PushExceptionTest()
+        [ExpectedException(typeof(AddException))]
+        public void AddExceptionTest()
         {
             testHead.AddValueToPosition(1, 0);
             testHead.AddValueToPosition(1, 0);

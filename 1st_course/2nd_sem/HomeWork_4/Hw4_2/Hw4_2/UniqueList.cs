@@ -3,11 +3,6 @@
     public class UniqueList : List
     {
         /// <summary>
-        /// Указатель на голову списка
-        /// </summary>
-        private UniqueList head;
-
-        /// <summary>
         /// Добавляет новое значение, если его нет в списке, если же есть, то бросает исключение
         /// </summary>
         /// <param name="value">Новое значение</param>
@@ -16,7 +11,7 @@
         {
             if (IsContainedElementInList(value))
             {
-                throw new PushException("Данный элемент уже есть в списке!");
+                throw new AddException("Данный элемент уже есть в списке!");
             }
             else
             {

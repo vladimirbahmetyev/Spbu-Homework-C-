@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System;
 
 namespace Hw51.Tests
 {
@@ -8,6 +9,7 @@ namespace Hw51.Tests
     {
         private List<int> testList;
         private List<int> returningList;
+        private List<int> emptyList;
 
         [TestInitialize]
         public void Initialize()
@@ -18,7 +20,7 @@ namespace Hw51.Tests
         [TestMethod]
         public void MapTest1()
         {
-            returningList = Functions.Map(testList, x => x * 2);
+            returningList = Functions<int>.Map(testList, x => x * 2);
 
             for (var i = 0; i <= 2; ++i)
             {
@@ -29,7 +31,7 @@ namespace Hw51.Tests
         [TestMethod]
         public void MapTest2()
         {
-            returningList = Functions.Map(testList, x => x * 2 - 5 + 11);
+            returningList = Functions<int>.Map(testList, x => x * 2 - 5 + 11);
 
             for (var i = 0; i <= 2; ++i)
             {
@@ -40,15 +42,37 @@ namespace Hw51.Tests
         [TestMethod]
         public void FilterTest()
         {
-            returningList = Functions.Filter(testList, x => (x % 2) == 0);
+            returningList = Functions<int>.Filter(testList, x => (x % 2) == 0);
             Assert.AreEqual(2, returningList[0]);
         }
 
         [TestMethod]
         public void FoldTest()
         {
-            var value = Functions.Fold(testList, 1, (acc, elem) => acc * elem);
+            var value = Functions<int>.Fold(testList, 1, (acc, elem) => acc * elem);
             Assert.AreEqual(6, value);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void FilterEmptyListTest()
+        {
+            returningList = Functions<int>.Filter(emptyList, x => (x % 2) == 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MapEmptyListTest()
+        {
+            returningList = Functions<int>.Map(emptyList, x => x * 2 - 5 + 11);
+            Assert.AreEqual(emptyList, returningList);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void FoldEmptyListTest()
+        {
+            var value = Functions<int>.Fold(emptyList, 1, (acc, elem) => acc * elem);
         }
     }
 }

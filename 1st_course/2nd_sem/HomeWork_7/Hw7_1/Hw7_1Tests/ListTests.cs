@@ -91,19 +91,26 @@ namespace Hw71.Tests
         }
 
         [TestMethod]
-        public void EnumeratorForListOfFiftyElementsTest()
+        public void EnumeratorForListOfFiftyOneElementsTest()
         {
             for (int i = 0; i <= 50; i++)
             {
                 list.AddValueToPosition(50 - i, i);
             }
 
-            int value = 50;
+            bool[] chekValue = new bool[51];
+            for (int i = 0; i <= 50; i++)
+            {
+                chekValue[i] = false;
+            }
 
             foreach (int element in list)
             {
-                Assert.AreEqual(element, value);
-                value--;
+                chekValue[element] = true;
+            }
+            for (int i = 0; i <= 50; i++)
+            {
+                Assert.IsTrue(chekValue[i]);
             }
         }
     }

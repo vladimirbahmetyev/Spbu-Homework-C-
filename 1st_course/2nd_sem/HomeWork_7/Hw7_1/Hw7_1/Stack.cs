@@ -7,7 +7,7 @@ namespace Hw71
     /// <summary>
     /// Класс Стек
     /// </summary>
-    public class Stack<T> : IEnumerable<T>
+    public class Stack<T>
     {
         /// <summary>
         /// Класс Элемент стека
@@ -51,15 +51,5 @@ namespace Hw71
         /// Метод возвращает true, если стек пустой
         /// </summary>
         public bool IsStackEmpty() => null == head;
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

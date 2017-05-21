@@ -7,7 +7,7 @@ namespace Hw71
     /// <summary>
     /// Класс связный список
     /// </summary>
-    public class List<T> : IEnumerable
+    public class List<T> : IEnumerable<T>
     {
         /// <summary>
         /// Элемент связного списка
@@ -81,7 +81,6 @@ namespace Hw71
         /// position не может быть больше length
         /// </summary>
         /// <param name="position">Позиция искомого элемента</param>
-        /// <returns></returns>
         public T GetValueByPosition(int position)
         {
             if (position < 0 || position >= length)

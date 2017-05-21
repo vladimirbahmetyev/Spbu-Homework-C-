@@ -2,7 +2,7 @@
 
 namespace Hw24
 {
-    /// <summary>
+ /// <summary>
  /// Стековый калькулятор
  /// </summary>
     public class StackCalc
@@ -10,7 +10,6 @@ namespace Hw24
         /// <summary>
         /// Стэк для вычислений
         /// </summary>
-        /// 
         private IStack stack;
 
         /// <summary>
@@ -35,15 +34,7 @@ namespace Hw24
         /// </summary>
         public void Sum()
         {
-            if(stack.GetLength() < 2)
-            {
-                throw new InvalidOperationException("В стеке менее двух чисел!");
-            }
-
-            int numberTwo = stack.Pop();
-            int numberOne = stack.Pop();
-
-            stack.Push(numberOne + numberTwo);
+            Operation('+');
         }
 
         /// <summary>
@@ -51,15 +42,7 @@ namespace Hw24
         /// </summary>
         public void Multiplication()
         {
-            if (stack.GetLength() < 2)
-            {
-                throw new InvalidOperationException("В стеке менее двух чисел!");
-            }
-
-            int numberTwo = stack.Pop();
-            int numberOne = stack.Pop();
-
-            stack.Push(numberOne * numberTwo);
+            Operation('*');
         }
 
         /// <summary>
@@ -67,15 +50,7 @@ namespace Hw24
         /// </summary>
         public void Subtraction()
         {
-            if (stack.GetLength() < 2)
-            {
-                throw new InvalidOperationException("В стеке менее двух чисел!");
-            }
-
-            int numberTwo = stack.Pop();
-            int numberOne = stack.Pop();
-
-            stack.Push(numberOne - numberTwo);
+            Operation('-');
         }
 
         /// <summary>
@@ -83,15 +58,46 @@ namespace Hw24
         /// </summary>
         public void Division()
         {
+            Operation('/');
+        }
+
+        /// <summary>
+        /// Проводит операции по выбору
+        /// </summary>
+        private void Operation(char operationValue)
+        {
             if (stack.GetLength() < 2)
             {
                 throw new InvalidOperationException("В стеке менее двух чисел!");
             }
-
             int numberTwo = stack.Pop();
             int numberOne = stack.Pop();
-
-            stack.Push(numberOne / numberTwo);
+            int finalNumber = 0;
+            switch (operationValue)
+            {
+                case '+':
+                    {
+                        finalNumber = numberOne + numberTwo;
+                        break;
+                    }
+                case '-':
+                    {
+                        finalNumber = numberOne - numberTwo;
+                        break;
+                    }
+                case '/':
+                    {
+                        finalNumber = numberOne / numberTwo;
+                        break;
+                    }
+                case '*':
+                    {
+                        finalNumber = numberOne * numberTwo;
+                        break;
+                    }
+                default: break;
+            }
+            stack.Push(finalNumber);
         }
 
         /// <summary>
@@ -99,7 +105,7 @@ namespace Hw24
         /// </summary>
         public int GetAnswer()
         {
-            if(stack.IsEmpty())
+            if (stack.IsEmpty())
             {
                 throw new InvalidOperationException("Стек пустой!");
             }

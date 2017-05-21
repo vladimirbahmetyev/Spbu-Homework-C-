@@ -22,7 +22,6 @@ namespace Hw24
         /// <summary>
         /// Стек на массиве
         /// </summary>
-        /// 
         private int[] array;
 
         /// <summary>
@@ -38,7 +37,7 @@ namespace Hw24
         /// </summary>
         public void Push(int value)
         {
-            if(head + 1 == length)
+            if (head + 1 == length)
             {
                 throw new InvalidOperationException("Стек переполнен!");
             }
@@ -67,7 +66,7 @@ namespace Hw24
         {
             if (IsEmpty())
             {
-                throw new Exception("Стек пустой!");
+                throw new InvalidOperationException("Стек пустой!");
             }
             return array[head];
         }

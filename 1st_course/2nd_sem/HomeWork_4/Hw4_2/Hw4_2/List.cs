@@ -20,6 +20,7 @@ namespace Hw42
             /// Указатель на следующий элемент списка
             /// </summary>
             public ListElement next { get; set; }
+
             /// <summary>
             /// Конструктор для класса ListElement
             /// </summary>
@@ -40,7 +41,7 @@ namespace Hw42
         /// <summary>
         /// Длина списка
         /// </summary>
-        public int length;
+        private int length;
 
         /// <summary>
         /// Добавление элемента на n-ую корректную позицию\
@@ -77,7 +78,7 @@ namespace Hw42
         /// position не может быть больше length
         /// </summary>
         /// <param name="position">Позиция искомого элемента</param>
-        /// <returns></returns>
+        /// <returns>Позиция элемента</returns>
         public int GetValueByPosition(int position)
         {
             if (position < 0 || position >= length)
@@ -191,7 +192,7 @@ namespace Hw42
         /// <summary>
         /// Выдает кол-во элементов в Списке
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Кол-во элементов</returns>
         public int GetLength() => length;
     }
 }

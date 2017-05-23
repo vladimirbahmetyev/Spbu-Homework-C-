@@ -1,5 +1,9 @@
 ﻿namespace Hw42
 {
+    /// <summary>
+    /// Класс уникальный список, в котором каждый 
+    /// элемент содержится в единственном экземпляре
+    /// </summary>
     public class UniqueList : List
     {
         /// <summary>

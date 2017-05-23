@@ -147,6 +147,10 @@ namespace Hw72
             {
                 RemoveElementFromPosition(FindPositionOfElementInList(value));
             }
+            else
+            {
+                throw new InvalidOperationException("Такого элемента нет в списке");
+            }
         }
 
         /// <summary>

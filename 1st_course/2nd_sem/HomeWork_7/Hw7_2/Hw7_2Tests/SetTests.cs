@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Hw72.Tests
 {
@@ -93,6 +94,31 @@ namespace Hw72.Tests
             firstSet.AddValue(1);
             firstSet.AddValue(1);
             Assert.AreEqual(1, firstSet.GetSize());
+        }
+
+        [TestMethod]
+        public void UnionEmptySets()
+        {
+            Assert.AreEqual(0, Set<int>.UnionSet(firstSet, secondSet).GetSize());
+        }
+
+        [TestMethod]
+        public void IntersectionEmptySets()
+        {
+            Assert.AreEqual(0, Set<int>.Intersection(firstSet, secondSet).GetSize());
+        }
+
+        [TestMethod]
+        public void AreEqualEmptySets()
+        {
+            Assert.IsTrue(Set<int>.AreEqual(firstSet, secondSet));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void DeleteElementFromEmptySet()
+        {
+            set.RemoveElementFromSet(1);
         }
     }
 }

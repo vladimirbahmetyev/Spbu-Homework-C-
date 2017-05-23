@@ -83,6 +83,7 @@
             List.DeleteElementFromList(value);
             size--;
         }
+
         /// <summary>
         /// Голова множества
         /// </summary>

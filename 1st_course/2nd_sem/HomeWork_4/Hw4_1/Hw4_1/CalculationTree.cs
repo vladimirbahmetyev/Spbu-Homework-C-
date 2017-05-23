@@ -7,20 +7,32 @@ namespace Hw41
     /// </summary>
     public class CalculationTree
     {
+        /// <summary>
+        /// Указатель на корень дерева
+        /// </summary>
         public TreeElement root;
 
+        /// <summary>
+        /// Конструктор дерева
+        /// </summary>
         public CalculationTree()
         {
             root = null;
         }
 
         /// <summary>
-        /// Класс элемент деревf
+        /// Класс элемент дерева
         /// </summary>
         public abstract class TreeElement
         {
+            /// <summary>
+            /// Оператор узла
+            /// </summary>
             public char OperatorType;
 
+            /// <summary>
+            /// Численное значение узла
+            /// </summary>
             public int Value;
 
             /// <summary>
@@ -60,7 +72,6 @@ namespace Hw41
             /// <summary>
             /// Значение
             /// </summary>
-
             public Operand(int value)
             {
                 Value = value;
@@ -69,7 +80,6 @@ namespace Hw41
             /// <summary>
             /// Распечатать операнд в строку результата
             /// </summary>
-            /// <param name="result"></param>
             public override void Print(ref string result)
             {
                 result = result + Value.ToString();
@@ -93,7 +103,6 @@ namespace Hw41
             /// <summary>
             /// Тип оператора
             /// </summary>
-
             public Operator(char type, TreeElement leftSon, TreeElement rigthSon)
             {
                 OperatorType = type;
@@ -182,6 +191,7 @@ namespace Hw41
             char operate = str[position];
 
             position++;
+
             if (str[position] == ' ')
             {
                 position++;

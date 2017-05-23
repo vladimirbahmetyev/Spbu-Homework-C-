@@ -21,9 +21,7 @@ namespace Hw41.Tests
         {
             CalculationTree tree = new CalculationTree();
             tree.root = tree.BuildTree("(* (+ 1 1 ) 2 )");
-
             string str = tree.PrintTree();
-
             Assert.AreEqual("(* (+ 1 1 ) 2 )", str);
         }
 

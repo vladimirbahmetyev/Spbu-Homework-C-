@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeException.cs" />
     <Compile Include="DeleteException.cs" />
     <Compile Include="List.cs" />
     <Compile Include="Program.cs" />

@@ -38,5 +38,17 @@
                 DeleteElementFromList(value);
             }
         }
+
+        public override void ChangeValueByPosition(int value, int position)
+        {
+            if (IsContainedElementInList(value))
+            {
+                throw new ChangeException("Данный элемент уже есть в списке!");
+            }
+            else
+            {
+                base.ChangeValueByPosition(value, position);
+            }
+        }
     }
 }

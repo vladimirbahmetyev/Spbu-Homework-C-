@@ -45,5 +45,14 @@ namespace Hw42.Tests
             testHead.AddValueToPosition(1, 0);
             testHead.DeleteElementFromUniqueList(2);
         }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ChangeException))]
+        public void ChangeValueByPositionExceptionTest()
+        {
+            testHead.AddValueToPosition(2, 0);
+            testHead.AddValueToPosition(1, 0);
+            testHead.ChangeValueByPosition(1, 1);
+        }
     }
 }

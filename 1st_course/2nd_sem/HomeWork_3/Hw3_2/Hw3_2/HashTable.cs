@@ -31,11 +31,21 @@ namespace Hw32
         }
         
         /// <summary>
+        /// Преобразует хэш в новый, который подходит для данной таблицы
+        /// </summary>
+        /// <param name="value">Слово для ключа</param>
+        /// <returns>Новый ключ</returns>
+        private int HashTableHash(string value)
+        {
+            return Math.Abs(hashFunction.GetHash(value)) % sizeOfHashTable;
+        }
+
+        /// <summary>
         /// Проверяет, есть ли данное слово в Хэш Таблице
         /// </summary>
         /// <param name="inputString">Слово, для проверки</param>
         /// <returns>Логический ответ на данный вопрос</returns>
-        public bool IsElementInHashTable(string inputString) => hashTableElements[hashFunction.GetHash(inputString) % sizeOfHashTable].IsElementInList(inputString);
+        public bool IsElementInHashTable(string inputString) => hashTableElements[HashTableHash(inputString)].IsElementInList(inputString);
 
         /// <summary>
         /// Добавляет новые элемент в Хэш Таблицу
@@ -45,7 +55,7 @@ namespace Hw32
         {
             if (!IsElementInHashTable(inputString))
             {
-                hashTableElements[hashFunction.GetHash(inputString) % sizeOfHashTable].AddValueToPosition(inputString, 0);
+                hashTableElements[HashTableHash(inputString)].AddValueToPosition(inputString, 0);
             }
         }
 
@@ -57,9 +67,8 @@ namespace Hw32
         {
             if (IsElementInHashTable(deleteString))
             {
-                hashTableElements[hashFunction.GetHash(deleteString) % sizeOfHashTable].DeleteElementFromList(deleteString);
+                hashTableElements[HashTableHash(deleteString)].DeleteElementFromList(deleteString);
             }
         }
-
     }
 }

@@ -15,12 +15,12 @@ namespace Hw32
             /// <summary>
             /// Значение элемента списка
             /// </summary>
-            public string value{ get; set; }
+            public string Value { get; set; }
 
             /// <summary>
             /// Указатель на следующий элемент списка
             /// </summary>
-            public ListElement next { get; set; }
+            public ListElement Next { get; set; }
 
             /// <summary>
             /// Конструктор для класса ListElement
@@ -28,10 +28,10 @@ namespace Hw32
             /// <param name="value">Значение элемента</param>
             /// <param name="next">указатель на следующий элемент</param>
             public ListElement (string value, ListElement next)
-           {
-                this.value = value;
-                this.next = next;
-           }
+            {
+                Value = value;
+                Next = next;
+            }
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Hw32
             ListElement cursor = head;
             for (var i = 0; i < position - 1; i++)
             {
-                cursor = cursor.next;
-                var newElement = new ListElement(value, cursor.next);
-                cursor.next = newElement;
+                cursor = cursor.Next;
+                var newElement = new ListElement(value, cursor.Next);
+                cursor.Next = newElement;
                 length++;
             }
         }
@@ -90,10 +90,10 @@ namespace Hw32
             var cursor = head;
             for (var i = 0; i < position; ++i)
             {
-                cursor = cursor.next;
+                cursor = cursor.Next;
             }
 
-            return cursor.value;
+            return cursor.Value;
         }
 
         /// <summary>
@@ -112,9 +112,9 @@ namespace Hw32
             ListElement cursor = head;
             for (int i = 0; i< position; i++)
             {
-                cursor = cursor.next;
+                cursor = cursor.Next;
             }
-            cursor.value = value;
+            cursor.Value = value;
         }
 
         /// <summary>
@@ -131,15 +131,15 @@ namespace Hw32
             }
             if (position == 0)
             {
-                head = head.next;
+                head = head.Next;
                 length--;
                 return;
             }
             ListElement cursor = head;
             for (int i = 0; i < position - 1; i++)
             {
-                cursor = cursor.next;
-                cursor.next = cursor.next.next;
+                cursor = cursor.Next;
+                cursor.Next = cursor.Next.Next;
                 length--;
             }
         }

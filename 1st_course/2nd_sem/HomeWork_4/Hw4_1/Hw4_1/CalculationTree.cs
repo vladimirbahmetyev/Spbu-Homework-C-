@@ -10,151 +10,17 @@ namespace Hw41
         /// <summary>
         /// Указатель на корень дерева
         /// </summary>
-        private TreeElement root;
+        private Operator root;
 
         /// <summary>
         /// Конструктор дерева
         /// </summary>
-        private CalculationTree()
-        {
-            root;
-        }
-
+        public CalculationTree() { }
+                
         /// <summary>
-        /// Класс элемент дерева
+        /// Метод, который считает результат арифметического выражения
         /// </summary>
-        public abstract class TreeElement
-        {
-            /// <summary>
-            /// Оператор узла
-            /// </summary>
-            public char OperatorType;
-
-            /// <summary>
-            /// Численное значение узла
-            /// </summary>
-            public int Value;
-
-            /// <summary>
-            /// Левый сын
-            /// </summary>
-            public TreeElement leftSon;
-            /// <summary>
-            /// Правый сын
-            /// </summary>
-            public TreeElement rigthSon;
-
-            /// <summary>
-            /// Конструктор, создающий элемент дерева
-            /// </summary>
-            public TreeElement()
-            {
-                leftSon = null;
-                rigthSon = null;
-            }
-
-            /// <summary>
-            /// Распечатать элемент в строку результата
-            /// </summary>
-            public abstract void Print(ref string result);
-
-            /// <summary>
-            /// Вычислить значение
-            /// </summary>
-            public abstract int Count();
-        }
-
-        /// <summary>
-        /// Класс Операнд
-        /// </summary>
-        private class Operand : TreeElement
-        {
-            /// <summary>
-            /// Значение
-            /// </summary>
-            public Operand(int value)
-            {
-                Value = value;
-            }
-
-            /// <summary>
-            /// Распечатать операнд в строку результата
-            /// </summary>
-            public override void Print(ref string result)
-            {
-                result = result + Value.ToString();
-            }
-
-            /// <summary>
-            /// Вычислить значение
-            /// </summary>
-            /// <returns></returns>
-            public override int Count()
-            {
-                return Value;
-            }
-        }
-
-        /// <summary>
-        /// Класс Оператор
-        /// </summary>
-        public class Operator : TreeElement
-        {
-            /// <summary>
-            /// Тип оператора
-            /// </summary>
-            private Operator(char type, TreeElement leftSon, TreeElement rigthSon)
-            {
-                OperatorType = type;
-                this.leftSon = leftSon;
-                this.rigthSon = rigthSon;
-
-            }
-
-            /// <summary>
-            /// Распечатать оператор в строку результата
-            /// </summary>
-            /// <param name="result"></param>
-            public override void Print(ref string result)
-            {
-                result = result + "(" + OperatorType + " ";
-                leftSon.Print(ref result);
-                result = result + " ";
-                rigthSon.Print(ref result);
-                result = result + " )";
-            }
-
-            /// <summary>
-            /// Вычислить значение
-            /// </summary>
-            /// <param name="value1">Значение левого сына</param>
-            /// <param name="value2">Значение правого сына</param>
-            /// <returns>Результат вычисления</returns>
-            public override int Count()
-            {
-                int value1 = leftSon.Count();
-                int value2 = rigthSon.Count();
-
-                switch (OperatorType)
-                {
-                    case '+':
-                        return value1 + value2;
-                    case '-':
-                        return value1 - value2;
-                    case '*':
-                        return value1 * value2;
-                    case '/':
-                        if (value2 == 0)
-                        {
-                            throw new DivideByZeroException("деление на ноль");
-                        }
-                        return value1 / value2;
-                    default:
-                        throw new ArgumentException("Некорректное выражение");
-                }
-            }
-        }
-
+        /// <returns>Результат</returns>
         public int CountTree()
         {
             return root.Count();
@@ -163,152 +29,156 @@ namespace Hw41
         /// <summary>
         /// Построение дерева разбора
         /// </summary>
-        /// <param name="str">Арифметическое выражение</param>
+        /// <param name="inputinputStringing">Арифметическое выражение</param>
         /// <returns>Готовое дерево разбора</returns>
-        private TreeElement BuildTree(string str)
+        private     Operator BuildTree(string inputString)
         {
-            TreeElement leftSonChild = null;
-            TreeElement rigthSonChild = null;
+            TreeElement LeftSon = null;
+            TreeElement RightSon = null;
 
             int position = 0;
 
-            if ((str[position] >= '0') && (str[position] <= '9'))
+            if (inputString[position] == '(')
             {
-                return new Operand(Convert.ToInt32(str[position]) - Convert.ToInt32('0'));
+                string newString = inputString.Substring(1, inputString.Length - 2);
+                inputString = newString;
             }
 
-            if (str[position] == '(')
-            {
-                string newStr = str.Substring(1, str.Length - 2);
-                str = newStr;
-            }
-
-            if (str[position] == ' ')
+            if (inputString[position] == ' ')
             {
                 position++;
             }
 
-            char operate = str[position];
+            char operate = inputString[position];
 
             position++;
 
-            if (str[position] == ' ')
+            if (inputString[position] == ' ')
             {
                 position++;
             }
 
-            if (str[position] == '(')
+            if (inputString[position] == '(')
             {
-                int ind = 1;
-                string newstr = "(";
-                while (ind != 0)
-                {
-                    position++;
+                String newString = GetExpression(inputString, ref position);
 
-                    if (str[position] == '(')
-                    {
-                        ind++;
-                    }
-                    if (str[position] == ')')
-                    {
-                        ind--;
-                    }
-
-                    newstr = newstr + str[position];
-                }
-
-                leftSonChild = BuildTree(newstr);
+                LeftSon = BuildTree(newString);
 
                 position++;
-                if (str[position] == ' ')
+
+                if (inputString[position] == ' ')
                 {
                     position++;
                 }
             }
             else
             {
-                if (str[position] == ' ')
+                if (inputString[position] == ' ')
                 {
                     position++;
                 }
 
-                if ((str[position] >= '0') && (str[position] <= '9'))
+                if ((inputString[position] >= '0') && (inputString[position] <= '9'))
                 {
-                    leftSonChild = new Operand(Convert.ToInt32(str[position]) - Convert.ToInt32('0'));
+                    LeftSon = new Operand(Convert.ToInt32(inputString[position]) - Convert.ToInt32('0'));
                 }
 
                 position++;
 
-                if (str[position] == ' ')
+                if (inputString[position] == ' ')
                 {
                     position++;
                 }
             }
 
-            if (str[position] == ' ')
+            if (inputString[position] == ' ')
             {
                 position++;
             }
 
-            if (str[position] == '(')
+            if (inputString[position] == '(')
             {
-                int ind = 1;
-                string newstr = "(";
-                while (ind != 0)
-                {
-                    position++;
+                String newString = GetExpression(inputString, ref position);
 
-                    if (str[position] == '(')
-                    {
-                        ind++;
-                    }
-                    if (str[position] == ')')
-                    {
-                        ind--;
-                    }
+                RightSon = BuildTree(newString);
 
-                    newstr = newstr + str[position];
-                }
-
-                rigthSonChild = BuildTree(newstr);
-
-                if (str[position] == ' ')
+                if (inputString[position] == ' ')
                 {
                     position++;
                 }
             }
             else
             {
-                if (str[position] == ' ')
+                if (inputString[position] == ' ')
                 {
                     position++;
                 }
 
-                if ((str[position] >= '0') && (str[position] <= '9'))
+                if ((inputString[position] >= '0') && (inputString[position] <= '9'))
                 {
-                    rigthSonChild = new Operand(Convert.ToInt32(str[position]) - Convert.ToInt32('0'));
+                    RightSon = new Operand(Convert.ToInt32(inputString[position]) - Convert.ToInt32('0'));
                 }
 
                 position++;
 
-                if (str[position] == ' ')
+                if ((position < inputString.Length - 1) && (inputString[position] == ' '))
                 {
                     position++;
                 }
             }
 
-            return new Operator(operate, leftSonChild, rigthSonChild);
+            var newOperator = new Operator(operate);
+            newOperator.LeftSon = LeftSon;
+            newOperator.RightSon = RightSon;
+            return newOperator;
+        }
+        
+        /// <summary>
+        /// Построить выражение
+        /// </summary>
+        private string GetExpression(string inputString, ref int oldPosition)
+        {
+            int position = 1;
+            string newString = "(";
+            while (position != 0)
+            {
+                oldPosition++;
+
+                if (inputString[oldPosition] == '(')
+                {
+                    position++;
+                }
+                if (inputString[oldPosition] == ')')
+                {
+                    position--;
+                }
+
+                newString = newString + inputString[oldPosition];
+            }
+            return newString;
+        }
+
+        /// <summary>
+        /// Построить дерево разбора
+        /// </summary>
+        /// <param name="expression"></param>
+        public void Build(string expression) => root = BuildTree(expression);
+
+        /// <summary>
+        /// Посчитать выражение
+        /// </summary>
+        /// <param name="expression">Выражение</param>
+        /// <returns>результат выражения</returns>
+        public int Calculate(string expression)
+        {
+            Build(expression);
+            return root.Count();
         }
 
         /// <summary>
         /// Распечатать дерево
         /// </summary>
         /// <returns></returns>
-        public string PrintTree()
-        {
-            string res = "";
-            root.Print(ref res);
-            return res;
-        }
+        public string PrintTree() => root.Print();
     }
 }

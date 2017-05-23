@@ -1,46 +1,49 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hw41;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Hw41.Tests
 {
-    [TestClass]
-    public class CalculateTreeTest
+    [TestClass()]
+    public class CalculationTreeTests
     {
-        [TestMethod]
-        public void BuildTreeTestFromTask()
-        {
-            CalculationTree tree = new CalculationTree();
-            CalculationTree.TreeElement root = tree.BuildTree("( * 1 2 )");
+        private CalculationTree tree;
 
-            Assert.AreEqual('*', root.OperatorType);
-            Assert.AreEqual(1, root.leftSon.Value);
-            Assert.AreEqual(2, root.rigthSon.Value);
+        [TestInitialize]
+        public void Initialize()
+        {
+            tree = new CalculationTree();
+        }
+
+        [TestMethod()]
+        public void CalculationTreeTestOne()
+        {
+            Assert.AreEqual(4, tree.Calculate("(* (+ 1 1 ) 2 )"));
         }
 
         [TestMethod]
-        public void PrintTestFromTask()
+        public void PrintTest()
         {
-            CalculationTree tree = new CalculationTree();
-            tree.root = tree.BuildTree("(* (+ 1 1 ) 2 )");
-            string str = tree.PrintTree();
-            Assert.AreEqual("(* (+ 1 1 ) 2 )", str);
+            tree.Build("(* (+ 1 1 ) 2 )");
+            string testString = tree.PrintTree();
+
+            Assert.AreEqual("(* (+ 1 1 ) 2 )", testString);
         }
 
-        [TestMethod]
-        public void CountTestFromTask()
+        [TestMethod()]
+        public void CalculationTreeTestTwo()
         {
-            CalculationTree tree = new CalculationTree();
-            tree.root = tree.BuildTree("(* (+ 1 1 ) 2 )");
-
-            Assert.AreEqual(4, tree.CountTree());
+            Assert.AreEqual(2, tree.Calculate("(/ (- 8 (* (+ 1 1 ) 2 ) ) 2 )"));
         }
 
-        [TestMethod]
-        public void CountTestOwnExample()
+        [TestMethod()]
+        public void CalculationTreeTestThree()
         {
-            CalculationTree tree = new CalculationTree();
-            tree.root = tree.BuildTree("(/ (- 8 (* (+ 1 1 ) 2 ) ) 2 )");
-
-            Assert.AreEqual(2, tree.CountTree());
+            Assert.AreEqual(16, tree.Calculate("(* (* 2 (* (+ 1 1 ) 2 ) ) 2 )"));
         }
     }
 }

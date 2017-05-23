@@ -5,6 +5,20 @@
     /// </summary>
     public class Set<T>
     {
+
+        /// <summary>
+        /// Список, на основе которого реализуется множество
+        /// </summary>
+        private List<T> List;
+        
+        /// <summary>
+        /// Конструктор множества
+        /// </summary>
+        public Set()
+        {
+            List = new List<T>();
+        }
+
         /// <summary>
         /// Объединение множеств
         /// </summary>
@@ -19,7 +33,7 @@
             {
                 if (!newSet.List.IsContained(element))
                 {
-                    newSet.AddValue(element);
+                    newSet.List.AddValueToPosition(element, 0);
                 }
             }
             return newSet;
@@ -65,7 +79,7 @@
         {
             if (!List.IsContained(value))
             {
-               List.AddValueToPosition(value, 0);
+                List.AddValueToPosition(value, 0);
                 size++;
             }
         }
@@ -73,7 +87,7 @@
         /// <summary>
         /// проверяет, содержится ли элемент в множестве
         /// </summary>
-        public bool IsElementInSet(T value) => List.IsContained(value);
+        public bool IsContains(T value) => List.IsContained(value);
 
         /// <summary>
         /// Удаляет элемент из множества
@@ -82,19 +96,6 @@
         {
             List.DeleteElementFromList(value);
             size--;
-        }
-
-        /// <summary>
-        /// Голова множества
-        /// </summary>
-        List<T> List { get; set; }
-
-        /// <summary>
-        /// конструктор множества
-        /// </summary>
-        public Set()
-        {
-            List = new List<T>();
         }
 
         /// <summary>

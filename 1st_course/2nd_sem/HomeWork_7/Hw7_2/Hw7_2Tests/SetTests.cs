@@ -22,16 +22,16 @@ namespace Hw72.Tests
         public void AddValueTest()
         {
             set.AddValue(1);
-            Assert.IsTrue(set.IsElementInSet(1));
+            Assert.IsTrue(set.IsContains(1));
         }
 
         [TestMethod()]
-        public void IsElementInSetTest()
+        public void IsContainsTest()
         {
             set.AddValue(1);
             set.AddValue(2);
             set.AddValue(3);
-            Assert.IsTrue(set.IsElementInSet(2));
+            Assert.IsTrue(set.IsContains(2));
         }
 
         [TestMethod()]
@@ -41,7 +41,7 @@ namespace Hw72.Tests
             set.AddValue(2);
             set.AddValue(3);
             set.RemoveElementFromSet(2);
-            Assert.IsFalse(set.IsElementInSet(2));
+            Assert.IsFalse(set.IsContains(2));
         }
 
         [TestMethod()]
@@ -56,7 +56,7 @@ namespace Hw72.Tests
             var resultSet = Set<int>.UnionSet(firstSet, secondSet);
             for (int i = 1; i < 7; i++)
             {
-                Assert.IsTrue(resultSet.IsElementInSet(i));
+                Assert.IsTrue(resultSet.IsContains(i));
             }
         }
 
@@ -70,10 +70,10 @@ namespace Hw72.Tests
             secondSet.AddValue(3);
             secondSet.AddValue(4);
             var resultSet = Set<int>.Intersection(firstSet, secondSet);
-            Assert.IsTrue(resultSet.IsElementInSet(2));
-            Assert.IsTrue(resultSet.IsElementInSet(3));
-            Assert.IsFalse(resultSet.IsElementInSet(1));
-            Assert.IsFalse(resultSet.IsElementInSet(4));
+            Assert.IsTrue(resultSet.IsContains(2));
+            Assert.IsTrue(resultSet.IsContains(3));
+            Assert.IsFalse(resultSet.IsContains(1));
+            Assert.IsFalse(resultSet.IsContains(4));
         }
 
         [TestMethod]

@@ -16,10 +16,12 @@ namespace Hw32
             /// Значение элемента списка
             /// </summary>
             public string value{ get; set; }
+
             /// <summary>
             /// Указатель на следующий элемент списка
             /// </summary>
-            public ListElement next {get; set;}
+            public ListElement next { get; set; }
+
             /// <summary>
             /// Конструктор для класса ListElement
             /// </summary>
@@ -40,7 +42,7 @@ namespace Hw32
         /// <summary>
         /// Длина списка
         /// </summary>
-        public int length;
+        private int length;
 
         /// <summary>
         /// Добавление элемента на n-ую корректную позицию\
@@ -77,7 +79,7 @@ namespace Hw32
         /// position не может быть больше length
         /// </summary>
         /// <param name="position">Позиция искомого элемента</param>
-        /// <returns></returns>
+        /// <returns>Позиция элемента</returns>
         public string GetValueByPosition(int position)
         {
             if (position < 0 || position >= length)
@@ -191,7 +193,7 @@ namespace Hw32
         /// <summary>
         /// Выдает кол-во элементов в Списке
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Кол-во элементов в списке</returns>
         public int GetLength() => length;
     }
 }

@@ -21,7 +21,7 @@ namespace Hw32
                 hash = 2402 * hash + symbol;
             }
 
-            return Math.Abs(hash) % 10000;
+            return Math.Abs(hash);
         }
     }
 }

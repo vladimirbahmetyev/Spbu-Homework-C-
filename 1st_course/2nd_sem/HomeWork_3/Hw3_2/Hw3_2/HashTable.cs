@@ -35,7 +35,7 @@ namespace Hw32
         /// </summary>
         /// <param name="inputString">Слово, для проверки</param>
         /// <returns>Логический ответ на данный вопрос</returns>
-        public bool IsElementInHashTable(string inputString) => hashTableElements[hashFunction.GetHash(inputString)].IsElementInList(inputString);
+        public bool IsElementInHashTable(string inputString) => hashTableElements[hashFunction.GetHash(inputString) % sizeOfHashTable].IsElementInList(inputString);
 
         /// <summary>
         /// Добавляет новые элемент в Хэш Таблицу
@@ -45,7 +45,7 @@ namespace Hw32
         {
             if (!IsElementInHashTable(inputString))
             {
-                hashTableElements[hashFunction.GetHash(inputString)].AddValueToPosition(inputString, 0);
+                hashTableElements[hashFunction.GetHash(inputString) % sizeOfHashTable].AddValueToPosition(inputString, 0);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Hw32
         {
             if (IsElementInHashTable(deleteString))
             {
-                hashTableElements[hashFunction.GetHash(deleteString)].DeleteElementFromList(deleteString);
+                hashTableElements[hashFunction.GetHash(deleteString) % sizeOfHashTable].DeleteElementFromList(deleteString);
             }
         }
 

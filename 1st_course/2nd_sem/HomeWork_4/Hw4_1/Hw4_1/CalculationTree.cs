@@ -10,14 +10,14 @@ namespace Hw41
         /// <summary>
         /// Указатель на корень дерева
         /// </summary>
-        public TreeElement root;
+        private TreeElement root;
 
         /// <summary>
         /// Конструктор дерева
         /// </summary>
-        public CalculationTree()
+        private CalculationTree()
         {
-            root = null;
+            root;
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Hw41
         /// <summary>
         /// Класс Операнд
         /// </summary>
-        public class Operand : TreeElement
+        private class Operand : TreeElement
         {
             /// <summary>
             /// Значение
@@ -103,7 +103,7 @@ namespace Hw41
             /// <summary>
             /// Тип оператора
             /// </summary>
-            public Operator(char type, TreeElement leftSon, TreeElement rigthSon)
+            private Operator(char type, TreeElement leftSon, TreeElement rigthSon)
             {
                 OperatorType = type;
                 this.leftSon = leftSon;
@@ -165,7 +165,7 @@ namespace Hw41
         /// </summary>
         /// <param name="str">Арифметическое выражение</param>
         /// <returns>Готовое дерево разбора</returns>
-        public TreeElement BuildTree(string str)
+        private TreeElement BuildTree(string str)
         {
             TreeElement leftSonChild = null;
             TreeElement rigthSonChild = null;

@@ -2,13 +2,13 @@
 
 namespace Hw24
 {
- /// <summary>
- /// Стековый калькулятор
- /// </summary>
+    /// <summary>
+    /// Стековый калькулятор
+    /// </summary>
     public class StackCalc
     {
         /// <summary>
-        /// Стэк для вычислений
+        /// Стек для вычислений
         /// </summary>
         private IStack stack;
 
@@ -34,7 +34,7 @@ namespace Hw24
         /// </summary>
         public void Sum()
         {
-            Operation('+');
+            Operation((x, y) => x + y);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Hw24
         /// </summary>
         public void Multiplication()
         {
-            Operation('*');
+            Operation((x, y) => x * y);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Hw24
         /// </summary>
         public void Subtraction()
         {
-            Operation('-');
+            Operation((x, y) => x - y);
         }
 
         /// <summary>
@@ -58,13 +58,13 @@ namespace Hw24
         /// </summary>
         public void Division()
         {
-            Operation('/');
+            Operation((x, y) => x / y);
         }
 
         /// <summary>
         /// Проводит операции по выбору
         /// </summary>
-        private void Operation(char operationValue)
+        private void Operation(Func<int, int, int> function)
         {
             if (stack.GetLength() < 2)
             {
@@ -72,32 +72,7 @@ namespace Hw24
             }
             int numberTwo = stack.Pop();
             int numberOne = stack.Pop();
-            int finalNumber = 0;
-            switch (operationValue)
-            {
-                case '+':
-                    {
-                        finalNumber = numberOne + numberTwo;
-                        break;
-                    }
-                case '-':
-                    {
-                        finalNumber = numberOne - numberTwo;
-                        break;
-                    }
-                case '/':
-                    {
-                        finalNumber = numberOne / numberTwo;
-                        break;
-                    }
-                case '*':
-                    {
-                        finalNumber = numberOne * numberTwo;
-                        break;
-                    }
-                default: break;
-            }
-            stack.Push(finalNumber);
+            stack.Push(function(numberOne, numberTwo));
         }
 
         /// <summary>
